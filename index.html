@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Selamat Idul Fitri ❤️</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Short+Stack&family=Homemade+Apple&display=swap'>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- Audio Player - Hidden but functional -->
+  <div class="audio-player">
+    <audio id="background-music" loop>
+      <!-- You'll need to replace this with your actual music file -->
+      <source src="music/Ramadan Kareem.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button id="music-toggle" class="music-button">
+      <span class="music-icon">🎵</span>
+    </button>
+  </div>
+
+  <div class="paper heart"></div>
+  <div class="paper image">
+    <p>Taqabbalallahu minna</p>
+    <p>wa minkum ❤️</p>
+    <img src="images/a1.jpg" />
+  </div>
+  <div class="paper image">
+    <p>Selamat Idul Fitri</p>
+    <img src="images/a2.jpg" />
+  </div>
+  <div class="paper image">
+    <p>Mohon Maaf</p>
+    <p>Lahir dan Batin ❤️</p>
+    <img src="images/a3.jpg" />
+  </div>
+  <div class="paper red">
+    <p class="p1">Minal Aidin</p>
+    <p class="p2">Wal Faizin</p>
+  </div>
+  <div class="paper">
+    <p class="p1">Semoga Allah menerima</p>
+    <p class="p1">Amal ibadah kita<span style="color: red !important;">❤️</span></p>
+  </div>
+  <div class="paper">
+    <p class="p1">Geser kertasnya untuk pesan lebaran!</p>
+  </div>
+
+  <!-- Script -->
+  <script src="./script.js"></script>
+  <script src="./mobile.js"></script>
+  <script>
+    // Add this script to control the background music
+    document.addEventListener('DOMContentLoaded', function() {
+      const music = document.getElementById('background-music');
+      const musicToggle = document.getElementById('music-toggle');
+      
+      // Auto-play music when user interacts with the page
+      document.body.addEventListener('click', function() {
+        if (music.paused) {
+          music.play().catch(e => console.log('Audio playback failed:', e));
+        }
+      }, { once: true });
+      
+      // Toggle music on/off
+      musicToggle.addEventListener('click', function() {
+        if (music.paused) {
+          music.play();
+          musicToggle.classList.add('playing');
+        } else {
+          music.pause();
+          musicToggle.classList.remove('playing');
+        }
+      });
+    });
+  </script>
+
+  <style>
+    /* Music player styles */
+    .audio-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    
+    .music-button {
+      background: rgba(255, 255, 255, 0.7);
+      border: 2px solid #ff9494;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .music-button:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.9);
+    }
+    
+    .music-button.playing {
+      animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</body>
+</html>
